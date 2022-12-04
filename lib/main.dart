@@ -1,18 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_5/Details.dart';
+import 'package:go_router/go_router.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Details(),
+      home: home(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -297,89 +299,99 @@ class _homeState extends State<home> {
             const SizedBox(
               height: 10,
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.9,
-              height: MediaQuery.of(context).size.height / 5,
-              decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 222, 239, 247),
-                  borderRadius: BorderRadius.circular(20)),
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      width: MediaQuery.of(context).size.width / 3,
-                      height: MediaQuery.of(context).size.height / 6,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: const Color.fromARGB(255, 227, 241, 106)),
-                      child: FittedBox(
-                          fit: BoxFit.contain,
-                          child: Image.asset('assets/per1.png')),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text(
-                          'Complate UX/UI \n & App Design',
-                          style: TextStyle(
-                              fontFamily: 'Poppins',
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black),
-                        ),
-                        Row(
-                          children: const [
-                            Icon(Icons.play_circle),
-                            SizedBox(
-                              width: 5,
-                            ),
-                            Text(
-                              '24 lessons',
-                              style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 14,
-                                  color: Colors.black54),
-                            )
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            Row(
-                              children: const [
-                                Icon(
-                                  Icons.star,
-                                  color: Color.fromARGB(255, 249, 234, 97),
-                                ),
-                                Text(
-                                  '4,9',
-                                  style: TextStyle(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 14,
-                                      color: Colors.black38),
-                                )
-                              ],
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width / 5,
-                            ),
-                            const Text(
-                              '\$ 26.99',
-                              style: TextStyle(
-                                  fontFamily: 'Poppins',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.black),
-                            )
-                          ],
-                        )
-                      ],
-                    )
-                  ],
+            GestureDetector(
+              onTap: (() {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const Details(),
+                  ),
+                );
+              }),
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height / 5,
+                decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 222, 239, 247),
+                    borderRadius: BorderRadius.circular(20)),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: MediaQuery.of(context).size.width / 3,
+                        height: MediaQuery.of(context).size.height / 6,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: const Color.fromARGB(255, 227, 241, 106)),
+                        child: FittedBox(
+                            fit: BoxFit.contain,
+                            child: Hero(
+                                tag: 1, child: Image.asset('assets/per1.png'))),
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            'Complate UX/UI \n & App Design',
+                            style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black),
+                          ),
+                          Row(
+                            children: const [
+                              Icon(Icons.play_circle),
+                              SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                '24 lessons',
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 14,
+                                    color: Colors.black54),
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Row(
+                                children: const [
+                                  Icon(
+                                    Icons.star,
+                                    color: Color.fromARGB(255, 249, 234, 97),
+                                  ),
+                                  Text(
+                                    '4,9',
+                                    style: TextStyle(
+                                        fontFamily: 'Poppins',
+                                        fontSize: 14,
+                                        color: Colors.black38),
+                                  )
+                                ],
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width / 5,
+                              ),
+                              const Text(
+                                '\$ 26.99',
+                                style: TextStyle(
+                                    fontFamily: 'Poppins',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black),
+                              )
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),
